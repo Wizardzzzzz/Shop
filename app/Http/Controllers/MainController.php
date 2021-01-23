@@ -18,7 +18,7 @@ class MainController extends Controller
         return view('categories',compact('categories'));
     }
 
-    public function product($product = null)
+    public function product($category,$product = null)
     {
         //dump($product);
         //or
@@ -32,4 +32,12 @@ class MainController extends Controller
         return view('category',compact('category'));
 //     dd($category);
     }
+    public function basket()
+    {
+       return view('basket');
+    }
+    public function basketPlace(){
+        return view('order');
+    }
+
 }
