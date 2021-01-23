@@ -15,15 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class,'index'])->name('index');
-Route::get('/basket',[MainController::class,'basket'])->name('basket');
-Route::get('/categories', [MainController::class,'categories'])->name('categories');
-Route::get('/{category}',[MainController::class,'category'])->name('category');
-Route::get('/{category}/{product?}', [MainController::class,'product'])->name('product');
-Route::get('/basket/place',[MainController::class,'basketPlace'])->name('basket-place');
 
-//Route::get('/categories',function (){
-//   return view('categories');
-//});
-//Route::get('/mobiles/iphone_x_64', function () {
-//    return view('product');
-//});
+Route::group([
+    'prefix' => 'categories',
+], function () {
+    Route::get('/', [MainController::class, 'index'])->name('index');
+    Route::get('/', [MainController::class, 'categories'])->name('categories');
+    Route::get('/{category}', [MainController::class, 'category'])->name('category');
+    Route::get('/{category}/{product?}', [MainController::class, 'product'])->name('product');
+});
+Route::group([
+    'prefix'=>'basket',
+],function (){
+    Route::get('/', [MainController::class, 'index'])->name('index');
+    Route::get('/', [MainController::class, 'basket'])->name('basket');
+    Route::get('/place', [MainController::class, 'basketPlace'])->name('basketPlace');
+});
+

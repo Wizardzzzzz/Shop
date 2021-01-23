@@ -1,6 +1,8 @@
 @extends('master')
-
-@section('title','Категорія '/*. $category->name*/)
+<?php
+/*dd($category);
+*/?>
+@section('title','Категорія ' . @$category->name)
 
 @section('content')
 
