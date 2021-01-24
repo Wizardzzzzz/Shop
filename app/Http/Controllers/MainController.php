@@ -36,14 +36,6 @@ class MainController extends Controller
 //     dd($category);
     }
 
-    public function basket()
-    {
-        return view('basket');
-    }
 
-    public function basketPlace()
-    {
-        return view('order');
-    }
 
 }
